@@ -54,12 +54,15 @@ test('Harga pangan dapat dimasukan ke database', function () {
     $barang = Barang::factory()->create();
     $pasar = Pasar::factory()->create();
     $satuan = Satuan::factory()->create();
-  
+    // Membuat entri pangan untuk data pengujian
+    $pangan = Pangan::factory()->create();
+    
     // Data yang akan dikirim dalam permintaan POST (perbaiki dengan nilai valid)
     $data = [
       'komoditas_id' => $komoditas->id,
       'pasar' => $pasar->nama, // Gunakan ID pasar yang valid
-      'satuan' => $satuan->nama, // Gunakan ID satuan yang valid
+      'satuan' => $satuan->nama,
+      'qty' => $pangan->qty, // Gunakan ID satuan yang valid
       'barang_id' => $barang->id,
       'harga' => 10000, // Harga yang sesuai dengan validasi
       'periode' => '2024-03-19',
@@ -77,6 +80,7 @@ test('Harga pangan dapat dimasukan ke database', function () {
       'barang_id' => $barang->id,
       'pasar' => $pasar->nama,
       'satuan' => $satuan->nama,
+      'qty' => $pangan->qty,
       'harga' => 10000,
       'periode' => '2024-03-19',
     ]);
@@ -103,6 +107,7 @@ test('Harga pangan dapat diubah lalu tersimpan ke database', function () {
       'barang_id' => $barang->id,
       'komoditas_id' => $komoditas->id,
       'satuan' => $satuan->nama,
+      'qty' => $pangan->qty,
       'pasar' => $pasar->nama,
       'harga_sebelum' => 2500,
       'harga' => 5000,

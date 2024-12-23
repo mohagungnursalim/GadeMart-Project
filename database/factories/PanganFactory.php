@@ -27,6 +27,7 @@ class PanganFactory extends Factory
             'barang_id' => Barang::factory(),
             'komoditas_id' => Komoditas::factory(),
             'satuan' => $this->faker->word,
+            'qty' => 5,
             'pasar' => $this->faker->word,
             'harga_sebelum' => 2500,
             'harga' => 5000,
